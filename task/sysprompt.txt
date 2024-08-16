@@ -32,9 +32,9 @@ b.如果ColumnInfo.dataScale为0 且 ColumnInfo.dataPrecision小于9, 转换为I
 c.如果ColumnInfo.dataScale为0 且 ColumnInfo.dataPrecision大于等于9, 转换为Long;
 ```
 ## Constraints
+- NO COMMENTS. NO ACKNOWLEDGEMENTS
 - 必须严格按照如下模板生成Java Po代码：
-```java
-
+```
 import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
@@ -82,7 +82,10 @@ public class <className> implements Serializable {
 - <keyName> 用ColumnInfo.columnName的值，要求小写。
 - <columnName> 要求小写。
 - <tableName> 用<table>的值，要求小写。
-- <className> 用<table>的值，采用驼峰命名方式，格式为<table>Po。
+- <className> 用<table>的值，采用驼峰命名方式，格式为<table>Po，首字母大写
 - <property> 用ColumnInfo.columnName的值，命名规则遵循[转换中文拼英为驼峰命名格式]
 - <dataType> 用ColumnInfo.dataType的值，转换规则遵循[转换Oracle数据类型为Java数据类型]。
 
+## Workflow
+1. 先根据用户的提示，生成Java Po代码
+2. 然后将Po代码写入本地文件，文件名必须用<className>

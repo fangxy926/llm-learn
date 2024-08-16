@@ -15,7 +15,7 @@ client = OpenAI()
 
 
 # 调用接口获取字段信息接口
-def get_fields_info(owner: str, table: str) -> List[ColumnInfo]:
+def get_fields_info(owner: str, table: str):
     url = "http://10.104.141.230:38081/app-wyyycode/v1/database/getFieldsInfo"
     request_body = {
         "owner": owner,
@@ -31,9 +31,16 @@ def get_fields_info(owner: str, table: str) -> List[ColumnInfo]:
         raise Exception("请求失败")
 
 
+# 写文件函数
+def write_file(file_name: str, content: str):
+    with open(file_name, "w", encoding='UTF-8') as f:
+        f.write(content)
+
+
 # 可以被回调的函数放入此字典
 function_mapper = {
     "get_fields_info": get_fields_info,
+    "write_file": write_file
 }
 
 
@@ -41,6 +48,9 @@ function_mapper = {
 def load_prompt(file_path: str):
     with open(file_path, "r", encoding='UTF-8') as f:
         return f.read()
+
+
+# 写文件
 
 
 def get_completion(messages, model="gpt-3.5-turbo"):
@@ -72,7 +82,28 @@ def get_completion(messages, model="gpt-3.5-turbo"):
                     "required": ["owner", "table"],
                 }
             }
-        }
+        },
+            {
+                "type": "function",
+                "function": {
+                    "name": "write_file",
+                    "description": "将内容写入本地文件",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "file_name": {
+                                "type": "string",
+                                "description": "文件名",
+                            },
+                            "content": {
+                                "type": "string",
+                                "description": "内容",
+                            }
+                        },
+                        "required": ["file_name", "content"],
+                    }
+                }
+            }
         ]
     )
     print("=====GPT回复=====")
@@ -118,4 +149,5 @@ if __name__ == '__main__':
         messages.append(response)  # 把大模型的回复加入到对话中
 
     print("=====最终回复=====")
-    print(response.content)
+    po_content = response.content
+    print(po_content)
