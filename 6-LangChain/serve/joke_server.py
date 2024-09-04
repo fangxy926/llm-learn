@@ -3,6 +3,9 @@ from fastapi import FastAPI
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langserve import add_routes
+from dotenv import find_dotenv, load_dotenv
+
+_ = load_dotenv(find_dotenv())
 
 
 app = FastAPI(
@@ -22,4 +25,4 @@ add_routes(
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="localhost", port=8080)
+    uvicorn.run(app, host="localhost", port=19999)

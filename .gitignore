@@ -3,3 +3,4 @@
 .git/
 .idea/
 /4-RAG/体检知识库.txt
+/6-LangChain/chroma_langchain_db/
