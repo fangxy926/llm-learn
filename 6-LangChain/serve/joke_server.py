@@ -7,11 +7,10 @@ from dotenv import find_dotenv, load_dotenv
 
 _ = load_dotenv(find_dotenv())
 
-
 app = FastAPI(
-  title="LangChain Server",
-  version="1.0",
-  description="A simple api server using Langchain's Runnable interfaces",
+    title="LangChain Server",
+    version="1.0",
+    description="A simple api server using Langchain's Runnable interfaces",
 )
 
 model = ChatOpenAI()
