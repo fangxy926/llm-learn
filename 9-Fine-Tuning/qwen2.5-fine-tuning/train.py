@@ -13,10 +13,13 @@ from arguments import ModelArguments, DataTrainingArguments, PeftArguments
 from peft import get_peft_model, LoraConfig, TaskType
 
 
-def load_lora_model(model_args, peft_args, device):
+def load_lora_model(model_args, peft_args):
     # 加载预训练的tokenizer和model
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path, use_fast=False, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(model_args.model_name_or_path, device_map=device)
+    model = AutoModelForCausalLM.from_pretrained(model_args.model_name_or_path, device_map='auto', torch_dtype='auto')
+    print("torch_dtype", model.dtype)
+    print("device", model.device)
+
     # 使用peft库配置lora参数
     peft_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -36,7 +39,6 @@ def load_lora_model(model_args, peft_args, device):
     # 打印可训练的参数量
     model.print_trainable_parameters()
 
-    model.to(device)
     return tokenizer, model
 
 
@@ -45,8 +47,7 @@ def main():
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, PeftArguments, TrainingArguments))
     model_args, data_args, peft_args, training_args = parser.parse_args_into_dataclasses()
     # 设备
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    tokenizer, model = load_lora_model(model_args, peft_args, device)
+    tokenizer, model = load_lora_model(model_args, peft_args)
 
     # 准备训练数据集并处理成所需格式
     if training_args.do_train:
@@ -56,7 +57,6 @@ def main():
             data_args.max_source_length,
             data_args.max_target_length
         )
-        print(train_dataset[0])
 
     if training_args.do_eval:
         eval_dataset = QwenDataset(

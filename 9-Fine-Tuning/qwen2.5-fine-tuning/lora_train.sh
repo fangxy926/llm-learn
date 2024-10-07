@@ -7,10 +7,10 @@ MAX_SEQ_LEN=384
 MAX_SOURCE_LEN=128
 MAX_TARGET_LEN=256
 
-BASE_MODEL_PATH=model/qwen/Qwen2___5-1___5B
+BASE_MODEL_PATH=model/qwen/Qwen2___5-1___5B-Instruct
 
 DATESTR=`date +%Y%m%d-%H%M%S`
-RUN_NAME=qwen2.5-1.5B-lora
+RUN_NAME=qwen2.5-1.5B-Instruct-lora
 OUTPUT_DIR=output/${RUN_NAME}-${DATESTR}
 mkdir -p $OUTPUT_DIR
 
