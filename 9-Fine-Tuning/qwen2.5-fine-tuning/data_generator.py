@@ -9,9 +9,9 @@ data_paths = [
     os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/IM_内科", "内科5000-33000.csv"),
 ]
 
-train_json_path = "./data/train.json"
-val_json_path = "./data/val.json"
-test_json_path = "./data/test.json"
+train_json_path = "data/train.json"
+val_json_path = "data/val.json"
+test_json_path = "data/test.json"
 
 # 划分数据集，训练集、验证集、测试集比例：8:1:1
 train_ratio = 0.8

@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import textwrap
+
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
@@ -13,7 +15,7 @@ tokenizer = AutoTokenizer.from_pretrained(origin_model_path, trust_remote_code=T
 model = AutoModelForCausalLM.from_pretrained(origin_model_path, device_map="auto").eval()
 
 while True:
-    prompt = input("请输入问题：")
+    prompt = input("\n\n请输入问题：")
 
     messages = [
         {"role": "system", "content": "你是一个医疗方面的专家，可以根据患者的问题进行解答。"},
@@ -27,7 +29,7 @@ while True:
         return_dict=True
     )
 
-    print(text)
+    # print(text)
 
     model_inputs = tokenizer([text], return_tensors="pt").to(device)
     generated_ids = model.generate(model_inputs.input_ids, max_new_tokens=1000)
@@ -36,4 +38,6 @@ while True:
         for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
     ]
     response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-    print(response)
+
+    wrapped_text = textwrap.fill(response, width=100)  # 100字符宽度自动换行
+    print(wrapped_text)

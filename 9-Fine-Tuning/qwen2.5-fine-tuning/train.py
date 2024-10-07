@@ -16,9 +16,7 @@ from peft import get_peft_model, LoraConfig, TaskType
 def load_lora_model(model_args, peft_args, device):
     # 加载预训练的tokenizer和model
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path, use_fast=False, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(model_args.model_name_or_path, device_map=device,
-                                                 torch_dtype=torch.bfloat16)
-    # model = model.half()  # 开启半精度
+    model = AutoModelForCausalLM.from_pretrained(model_args.model_name_or_path, device_map=device)
     # 使用peft库配置lora参数
     peft_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -58,6 +56,7 @@ def main():
             data_args.max_source_length,
             data_args.max_target_length
         )
+        print(train_dataset[0])
 
     if training_args.do_eval:
         eval_dataset = QwenDataset(
