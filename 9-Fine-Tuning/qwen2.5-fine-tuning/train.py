@@ -6,7 +6,6 @@ from transformers import (
     TrainingArguments,
     Trainer,
 )
-import torch
 
 from qwen_dataset import QwenDataset
 from arguments import ModelArguments, DataTrainingArguments, PeftArguments

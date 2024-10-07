@@ -4,6 +4,7 @@ import os
 
 # 配置文件路径
 data_paths = [
+    # os.path.join("E:/Chinese-medical-dialogue-data", "样例_内科5000-6000.csv"),
     os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/Pediatric_儿科", "儿科5-14000.csv"),
     # os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/Surgical_外科", "外科5-14000.csv"),
     # os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/IM_内科", "内科5000-33000.csv"),
@@ -12,6 +13,10 @@ data_paths = [
 train_json_path = "data/train.json"
 val_json_path = "data/val.json"
 test_json_path = "data/test.json"
+
+# train_json_path = "data/train-sample.json"
+# val_json_path = "data/val-sample.json"
+# test_json_path = "data/test-sample.json"
 
 # 划分数据集，训练集、验证集、测试集比例：8:1:1
 train_ratio = 0.8
