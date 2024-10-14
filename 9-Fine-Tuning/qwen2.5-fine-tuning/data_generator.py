@@ -4,8 +4,8 @@ import os
 
 # 配置文件路径
 data_paths = [
-    # os.path.join("E:/Chinese-medical-dialogue-data", "样例_内科5000-6000.csv"),
-    os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/Pediatric_儿科", "儿科5-14000.csv"),
+    os.path.join("E:/Chinese-medical-dialogue-data", "样例_内科5000-6000.csv"),
+    # os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/Pediatric_儿科", "儿科5-14000.csv"),
     # os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/Surgical_外科", "外科5-14000.csv"),
     # os.path.join("E:/Chinese-medical-dialogue-data/Data_数据/IM_内科", "内科5000-33000.csv"),
 ]

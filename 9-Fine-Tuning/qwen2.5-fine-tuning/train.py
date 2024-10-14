@@ -45,7 +45,7 @@ def main():
     # 解析传入的命令行参数
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, PeftArguments, TrainingArguments))
     model_args, data_args, peft_args, training_args = parser.parse_args_into_dataclasses()
-    # 设备
+    # 模型加载
     tokenizer, model = load_lora_model(model_args, peft_args)
 
     # 准备训练数据集并处理成所需格式
@@ -83,6 +83,7 @@ def main():
         args=args,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
+        # 数据规整器
         data_collator=DataCollatorForSeq2Seq(tokenizer=tokenizer, padding=True),
     )
 
