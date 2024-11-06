@@ -131,33 +131,17 @@ RDF 使用“主语-谓词-宾语”的**三元组**形式来表示，
 * 支持 ACID 事务
 * ...
 
-#### 2）安装运行（社区版 or 桌面版 二选一）
+#### 2）安装运行（桌面版 or 社区版 二选一）
 
-#### 2.1）**社区版**
+#### 2.0）版本支持
 
-去官方地址 [Neo4j Deployment Center - Graph Database &amp; Analytics](https://neo4j.com/deployment-center/)，下载 **4.4.38** 社区版的 window 安装包（**不要下载 5.25.1 版本，因为需要 java17 的环境，java11 环境跑不起来**）
+后续实验所需，我们要安装最新的5.x版本。
 
-​![image](assets/image-20241105082306-zxlsweh.png)​
+安装桌面版不需要手动配置好java17的环境，**安装社区版需要手动配置好java17环境！**
 
-将安装包解压，在解压后的目录下，用 CMD 输入命令 `bin\neo4j console` ​启动 neo4j 服务器
+​![image](assets/image-20241106090058-292ggoj.png)​
 
-​![image](assets/image-20241105082430-w3905jc.png)​
-
-浏览器中打开地址：[http://localhost:7474/]()，进入 neo4j 服务器页面，输入用户名：**neo4j，** 输入密码：**neo4j**
-
-​![image](assets/image-20241105082759-9b74rt5.png)​
-
-进入后会强制要求修改密码
-
-​![image](assets/image-20241105082902-qo1fbmu.png)​
-
-修改完成后进入主页
-
-​![image](assets/image-20241105082959-z5nzgwy.png)​
-
-‍
-
-#### 2.2）**桌面版**
+#### 2.1）**桌面版**
 
 下载地址：[Neo4j Desktop Download | Free Graph Database Download](https://neo4j.com/download/)
 
@@ -170,6 +154,7 @@ RDF 使用“主语-谓词-宾语”的**三元组**形式来表示，
 填写完成后就可以下载了，它会给你一个激活码，保存下来，后续会用到
 
 ​![image](assets/image-20241105081045-spvds2x.png)​
+
 
 双击下载好的安装包，选择安装目录，一直点击下一步即可安装成功
 
@@ -190,6 +175,30 @@ RDF 使用“主语-谓词-宾语”的**三元组**形式来表示，
 准备好后进入主页面
 
 ​![image](assets/image-20241105085155-nkzh4l9.png)​
+
+#### 2.2）**社区版**
+
+<span data-type="text" style="background-color: var(--b3-card-success-background); color: var(--b3-card-success-color);">前提：配置好java17的环境</span>
+
+去官方地址 [Neo4j Deployment Center - Graph Database &amp; Analytics](https://neo4j.com/deployment-center/)，下载 **5.25.1** 社区版的 window 安装包
+
+​![image](assets/image-20241106093011-pb2dwg3.png)​
+
+将安装包解压，在解压后的目录下，用 CMD 输入命令 `bin\neo4j console`​ 启动 neo4j 服务器。
+
+浏览器中打开地址：[http://localhost:7474/]()，进入 neo4j 服务器页面，输入用户名：**neo4j，** 输入密码：**neo4j。**
+
+​![image](assets/image-20241105082759-9b74rt5.png)​
+
+进入后会强制要求修改密码
+
+​![image](assets/image-20241105082902-qo1fbmu.png)​
+
+修改完成后进入主页
+
+​![image](assets/image-20241105082959-z5nzgwy.png)​
+
+‍
 
 #### 3）使用
 
