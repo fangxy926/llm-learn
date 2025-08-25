@@ -1,7 +1,15 @@
+# Environment variables
 .env
-.ipynb_checkpoints/
-.git/
+*/.env
+
+# IDE specific files
 .idea/
+*/.idea/
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Database and vector store files
 /4-RAG/体检知识库.txt
 /6-LangChain/chroma_langchain_db/
 /GraphRAG
+/milvus/milvus_docs/
